@@ -48,6 +48,9 @@ run_values.insert(0, 'event_balls_strikes',
                   run_values['balls'].astype(str) + '_' + 
                   run_values['strikes'].astype(str))
 
+# Drop null delta_run_exp (intentional walk intermediate pitches)
+run_values = run_values.dropna(subset=['delta_run_exp'])
+
 # Saving to CSV and Parquet
 run_values.to_csv('./run-values.csv', index = False)
 run_values.to_parquet('./run-values.parquet', index = False)
