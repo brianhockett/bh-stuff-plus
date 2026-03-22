@@ -49,7 +49,7 @@ months_by_year = {
 all_years_data = []
 
 # Removing columns unrelated to analysis
-columns_to_keep = ['pitch_type', 'game_date', 'release_speed',
+columns_to_keep = ['pitch_type', 'game_date', 'game_type', 'release_speed',
                     'release_pos_x', 'release_pos_z',
                     'player_name', 'pitcher',
                     'events', 'description', 'p_throws',
@@ -101,6 +101,12 @@ if all_years_data:
 
     # Concatenating all data into Pandas DataFrame
     statcast_data = pd.concat(all_years_data, ignore_index = True)
+
+    # Keep only regular season games
+    statcast_data = statcast_data[statcast_data['game_type'] == 'R']
+
+    # Drop game_type now
+    statcast_data = statcast_data.drop(columns = ['game_type'])
 
     # Drop automatic balls/strikes, no pitch characteristics
     statcast_data = statcast_data[~statcast_data['description'].isin(['automatic_ball', 'automatic_strike'])]
