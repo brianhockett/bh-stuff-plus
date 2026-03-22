@@ -159,10 +159,15 @@ if all_years_data:
     statcast_data['description_group'] = statcast_data['description'].map(des_dict)
     statcast_data['events_group'] = statcast_data['events'].map(event_dict)
 
-    # Anomalous data error found earlier, where desc was hit by pitch, but no event was recorded for unknown reason
+    # Drop anomalous data error found earlier, where desc was hit by pitch, but no event was recorded for unknown reason
     statcast_data = statcast_data[
     ~((statcast_data['description'] == 'hit_by_pitch') & (statcast_data['events'].isna()))
 ]
+
+    # Drop anomalous walks on impossible ball counts that were found
+    statcast_data = statcast_data[
+        ~((statcast_data['events'] == 'walk') & (statcast_data['balls'] < 3))
+    ]
     
     # Null out description_group for events with no clean run value mapping
     statcast_data.loc[statcast_data['events'].isin(['field_error', 'catcher_interf', 'truncated_pa']), 'description_group'] = None
