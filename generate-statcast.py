@@ -48,6 +48,17 @@ months_by_year = {
 # List to hold cumulative data
 all_years_data = []
 
+# Removing columns unrelated to analysis
+columns_to_keep = ['pitch_type', 'game_date', 'release_speed',
+                    'release_pos_x', 'release_pos_z',
+                    'player_name', 'pitcher',
+                    'events', 'description', 'p_throws',
+                    'balls', 'strikes',
+                    'game_year', 'pfx_x', 'pfx_z',
+                    'ax', 'ay', 'az', 'release_spin_rate',
+                    'release_extension', 'release_pos_y', 'pitch_name',
+                    'spin_axis', 'delta_run_exp']
+
 # Loop through each season
 for year in years:
     print(f'Downloading Statcast data for {year}')
@@ -64,6 +75,7 @@ for year in years:
             # Get monthly chunk of statcast data
             chunk = pb.statcast(start, end, verbose = False)
             if chunk is not None and len(chunk) > 0:
+                chunk = chunk[columns_to_keep]
                 year_data.append(chunk)
             else:
                 print(f"No data found for {start} to {end}")
@@ -96,18 +108,6 @@ if all_years_data:
     # Convert break values to inches
     statcast_data['pfx_z'] = statcast_data['pfx_z'] * 12
     statcast_data['pfx_x'] = statcast_data['pfx_x'] * 12
-
-    # Removing columns unrelated to analysis
-    columns_to_keep = ['pitch_type', 'game_date', 'release_speed',
-                       'release_pos_x', 'release_pos_z',
-                       'player_name', 'pitcher',
-                       'events', 'description', 'p_throws',
-                       'balls', 'strikes',
-                       'game_year', 'pfx_x', 'pfx_z',
-                       'ax', 'ay', 'az', 'release_spin_rate',
-                       'release_extension', 'release_pos_y', 'pitch_name',
-                       'spin_axis', 'delta_run_exp']
-    statcast_data = statcast_data[columns_to_keep]
 
     # Dictionary to simplify descriptions
     des_dict = {
@@ -198,8 +198,8 @@ if all_years_data:
     statcast_data.insert(6, 'pitcher_season', statcast_data['pitcher'].astype(int).astype(str) + '_' + statcast_data['game_year'].astype(str))
 
     # Saving data to CSV and Parquet
-    statcast_data.to_csv('./statcast-data.csv', index = False)
     statcast_data.to_parquet('./statcast-data.parquet', index = False)
+    statcast_data.to_csv('./statcast-data.csv', index = False)
 
     print("Saved Statcast data as statcast-data.csv and statcast-data.parquet")
     logger.info("Saved Statcast data as statcast-data.csv and statcast-data.parquet")
