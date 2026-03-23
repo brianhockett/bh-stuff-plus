@@ -47,7 +47,12 @@ Table with links to readings (stored in UVA OneDrive Folder)
 Data Acquisition paragraph
 
 ### Code Table
-Table linking to data generation code
+| | Data | Description | Link to Code |
+|-|-------------|-----------|-------------|
+| | Statcast Pitch Data | Uses `pybaseball` package to get Statcast pitch data from 2021 to 2025 | https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-statcast.py |
+| | Pitcher Statistics Data | Uses `Fangraphs API` to collect pitcher summary statistics from 2021 to 2025 | https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-stats.py |
+| | Pitcher Biographical Data | Uses `MLB Stats API` to collect pitcher biographical information | https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-bio.py |
+| | Expected Run Value Data | Uses Statcast pitch data to derive average Expected Run Value deltas for every balls-strikes-outcome combination | https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-run-values.py |
 
 ### Bias Identification
 Bias ID paragraph
