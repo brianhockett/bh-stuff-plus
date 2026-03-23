@@ -55,8 +55,8 @@ df_bio = pd.DataFrame(pitcher_bios)
 
 # Saving data to CSV and Parquet
 # Save to CSV and Parquet
-df_bio.to_csv('./pitcher-bio.csv', index = False)
-df_bio.to_parquet('./pitcher-bio.parquet', index = False)
+df_bio.to_csv('../data/pitcher-bio.csv', index = False)
+df_bio.to_parquet('../data/pitcher-bio.parquet', index = False)
 
 print("Saved biographical data as pitcher-bio.csv and pitcher-bio.parquet")
 logger.info("Saved biographical data as pitcher-bio.csv and pitcher-bio.parquet")

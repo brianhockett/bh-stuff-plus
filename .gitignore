@@ -2,3 +2,5 @@
 *.parquet
 *.log
 test*
+data
+logs

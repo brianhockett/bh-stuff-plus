@@ -204,8 +204,8 @@ if all_years_data:
     statcast_data.insert(6, 'pitcher_season', statcast_data['pitcher'].astype(int).astype(str) + '_' + statcast_data['game_year'].astype(str))
 
     # Saving data to CSV and Parquet
-    statcast_data.to_parquet('./statcast-data.parquet', index = False)
-    statcast_data.to_csv('./statcast-data.csv', index = False)
+    statcast_data.to_parquet('../data/statcast-data.parquet', index = False)
+    statcast_data.to_csv('../data/statcast-data.csv', index = False)
 
     print("Saved Statcast data as statcast-data.csv and statcast-data.parquet")
     logger.info("Saved Statcast data as statcast-data.csv and statcast-data.parquet")

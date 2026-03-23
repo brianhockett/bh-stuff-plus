@@ -48,8 +48,8 @@ df = df[['pitcherID', 'playerid', 'Season', 'PlayerName', 'Age', 'Throws', 'ERA'
 df.insert(0, 'pitcherID_Season', df['pitcherID'].astype(str) + '_' + df['Season'].astype(str))
 
 # Saving to CSV and Parquet
-df.to_csv('./pitcher-stats.csv', index = False)
-df.to_parquet('./pitcher-stats.parquet', index = False)
+df.to_csv('../data/pitcher-stats.csv', index = False)
+df.to_parquet('../data/pitcher-stats.parquet', index = False)
 
 print("Saved pitcher statistical data as pitcher-stats.csv and pitcher-stats.parquet")
 logger.info("Saved pitcher statistical data as pitcher-stats.csv and pitcher-stats.parquet")
