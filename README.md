@@ -28,7 +28,7 @@ Rationale paragraph
 Motivation paragraph
 
 ### Press Release Headline and Link
-[**Press Release Title**](https://github.com/TBD)
+[**New Stuff+ Model Shows Predictive Advantage Over Traditional Performance Metrics**](https://github.com/brianhockett/bh-stuff-plus/blob/main/PressRelease.md)
 
 ## Domain Exposition
 
@@ -73,17 +73,4 @@ ERD Image
 ### Data Dictionary
 
 ### Data Dictionary Uncertainty
-
-Questions:
-
-Should actual log files be included in repo, or just in the scripts
-
-Include whole data dictionary?
-    Is quantification of uncertainty part of the same dictionary?
-
-Should scripts for generating the data be stored in the same repo
-
-Query: demonstrate queries to prepare your solution?
-
-Do we need sample code, what was supposed to be in the sample code for the HW?
 
