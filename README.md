@@ -10,7 +10,7 @@ Executive summary paragraph
 | Name | Brian Hockett |
 | NetID | mgh2xx |
 | DOI | [https://doi.org/TBD](https://doi.org/TBD) |
-| Press Release | [Press Release Title](https://github.com/TBD) |
+| Press Release | [New Stuff+ Model Shows Predictive Advantage Over Traditional Performance Metrics](https://github.com/brianhockett/bh-stuff-plus/blob/main/PressRelease.md) |
 | Data | [UVA OneDrive Folder Link](TBD) |
 | Pipeline | [Analysis Code](TBD) |
 | License | [TBD](TBD.md) |
