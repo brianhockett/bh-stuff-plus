@@ -12,7 +12,7 @@ Executive summary paragraph
 | DOI | [https://doi.org/TBD](https://doi.org/TBD) |
 | Press Release | [New Stuff+ Model Shows Predictive Advantage Over Traditional Performance Metrics](https://github.com/brianhockett/bh-stuff-plus/blob/main/PressRelease.md) |
 | Data | [UVA OneDrive Folder Link](TBD) |
-| Pipeline | [Analysis Code](TBD) |
+| Pipeline | [Analysis Pipeline](TBD) |
 | License | [TBD](TBD.md) |
 
 ## Problem Definition
@@ -66,7 +66,7 @@ Rationale paragraph
 ## Metadata
 
 ### Schema
-ERD Image
+![Entity Relationship Diagram](https://github.com/brianhockett/bh-stuff-plus/blob/main/img/erd.png)
 
 ### Data Table
 
