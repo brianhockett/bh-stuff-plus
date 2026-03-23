@@ -5,7 +5,7 @@
 Executive summary paragraph
 
 
-| Project Information |   |
+| Information | Value  |
 |---:|---:|
 | Name | Brian Hockett |
 | NetID | mgh2xx |
