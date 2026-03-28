@@ -14,4 +14,4 @@ Traditional avenues for evaluating pitcher performance are outcome-oriented, wit
 Instead of relying on ERA or other outcome-based metrics, this Stuff+ solution uses only pitch-level data to evaluate pitcher performance. Pitch characteristics like velocity, spin, and movement are fed into a model, and the output is a single value representing how well that pitch prevents runs from scoring. By focusing only on the pitch characteristics, this value is able to avoid factors like defense or luck, and evaluate only the pitcher's process and what pitch characteristics drive success. This solution allows for more accurate prediction of future pitcher performance, and allows for more actionable coaching of pitchers.
 
 ## Chart
-[PlaceHolder]
+![Stuff+ Correlation Plot](https://github.com/brianhockett/bh-stuff-plus/blob/main/img/stuff_plus_correlation_plot.png)
