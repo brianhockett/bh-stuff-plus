@@ -72,12 +72,12 @@ The raw data was acquired in four steps, one for each table in the database. The
 Each dataset was saved as both a .csv and .parquet file, and will be loaded into a DuckDB database for the project submission.
 
 ### Code Table
-| | Data | Description | Link to Code |
-|-|-------------|-----------|-------------|
-| | Statcast Pitch Data | Uses `pybaseball` package to get Statcast pitch data from 2021 to 2025 | https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-statcast.py |
-| | Pitcher Statistics Data | Uses `Fangraphs API` to collect pitcher summary statistics from 2021 to 2025 | https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-stats.py |
-| | Pitcher Biographical Data | Uses `MLB Stats API` to collect pitcher biographical information | https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-bio.py |
-| | Expected Run Value Data | Uses Statcast pitch data to derive average Expected Run Value deltas for every balls-strikes-outcome combination | https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-run-values.py |
+| Data | Description | Link to Code |
+|-------------|-----------|-------------|
+| Statcast Pitch Data | Uses `pybaseball` package to get Statcast pitch data from 2021 to 2025 | https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-statcast.py |
+| Pitcher Statistics Data | Uses `Fangraphs API` to collect pitcher summary statistics from 2021 to 2025 | https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-stats.py |
+| Pitcher Biographical Data | Uses `MLB Stats API` to collect pitcher biographical information | https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-bio.py |
+| Expected Run Value Data | Uses Statcast pitch data to derive average Expected Run Value deltas for every balls-strikes-outcome combination | https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-run-values.py |
 
 ### Bias Identification
 # NEEDS FIXING
@@ -98,98 +98,99 @@ The first major decision made was about which seasons of data to collect. The ch
 ![Entity Relationship Diagram](https://github.com/brianhockett/bh-stuff-plus/blob/main/img/erd.png)
 
 ### Data Table
-|-|-------------|-----------|-------------|
-| | StatcastPitch | Outcome and pitch characteristics for every pitch captured by Statcast from 2021 to 2025| ENTER ONEDRIVE LINK |
-| | PitcherStats | Summary statistics for every pitcher-season from 2021 to 2025| ENTER ONEDRIVE LINK |
-| | PitcherBio | Biographical information for every pitcher found in the StatcastPitch table | ENTER ONEDRIVE LINK |
-| | ExpectedRunValue | Expected Run Value delta for every balls-strikes-outcome combination | ENTER ONEDRIVE LINK |
+|-------------|-----------|-------------|---------------|
+| StatcastPitch | Outcome and pitch characteristics for every pitch captured by Statcast from 2021 to 2025| ENTER ONEDRIVE LINK |
+| PitcherStats | Summary statistics for every pitcher-season from 2021 to 2025| ENTER ONEDRIVE LINK |
+| PitcherBio | Biographical information for every pitcher found in the StatcastPitch table | ENTER ONEDRIVE LINK |
+| ExpectedRunValue | Expected Run Value delta for every balls-strikes-outcome combination | ENTER ONEDRIVE LINK |
 
 ### Data Dictionary
 #### **StatcastPitch**
-| | Field Name | Data Type | Description | Example Value | Key |
-|-|-------------|-----------|-------------|---------------|-----|
-| | pitchID | Integer | Unique identifier for each pitch in the dataset, coutning up from 0 | 1349 | Primary |
-| | pitcher | Integer | MLBAM identifer for each pitcher in the dataset | 445276 | Foreign |
-| | player_name | String | Name of the pitcher | "Alcala, Jorge" | |
-| | p_throws | String | Handedness of the pitcher | "L" | |
-| | game_date | Datetime | Date of the game pitch was thrown in | "2024-05-13" |
-| | game_year | Integer | Year of the game pitch was thrown in | 2021 |
-| | pitcher_season | String | Composite foreign key combining pitcher and game_year columns | "445276_2021" | Foreign |
-| | balls | Integer | The number of balls in the count prior to the pitch | 3 |  |
-| | strikes | Integer | The number of strikes in the count prior to the pitch | 2 |  |
-| | pitch_type | String | The short-form name for the type of pitch thrown | "FF" |  |
-| | pitch_name | String | The long-form name for the type of pitch thrown | "4-Seam Fastball" |  |
-| | release_speed | Float | The speed of the ball at the time of release in mph | 94.8 |  |
-| | release_pos_x | Float | Horizontal release position of the ball measured in feet from the catcher's perspective | -2.62 |  |
-| | release_pos_y | Float | Release position of the ball measured in feet from the catcher's perspective | 54.63 |  |
-| | release_pos_z | Float | Vertical release position of the ball measured in feet from the catcher's perspective | 6.42 |  |
-| | release_extension | Float | Release extension of pitch in feet towards the plate | 5.9 |  |
-| | release_spin_rate | Integer | Spin rate in rpm of pitch at release | 2400 |  |
-| | spin_axis | Float | Spin axis in the 2D X-Z plane in degrees from 0 to 360 | 225 |  |
-| | pfx_x | Float | Horizontal movement in inches from the catcher's perspective| -9.1 |  |
-| | pfx_z | Float | Vertical deviation from gravity-only path in inches from the catcher's perspective| 19.1 |  |
-| | ax | Float | Horizontal acceleration of the ball at y = 50ft in ft/sec$^2$| -11.74 |  |
-| | ay | Float | Acceleration of the ball towards plate at y = 50ft in ft/sec$^2$| 33.52 |  |
-| | az | Float | Vertical acceleration of the ball at y = 50ft in ft/sec$^2$| -12.75 |  |
-| | description | String | Description of the resulting pitch| "missed_bunt" |  |
-| | description_group | String | Broader, grouped description of the resulting pitch | "swinging_strike" |  |
-| | events | String | Outcome of the resulting plate appearance, if it ends on this pitch | "fielders_choice" |  |
-| | events_group | String | Broader, grouped outcome of the resulting plate appearance, if it ends on this pitch | "field_out" |  |
-| | delta_run_exp | Float | Difference in expected runs before and after pitch | 1.42 | |
-| | event_balls_strikes | String | Composite foreign key combining events_group/description_group, balls, and strikes | "home_run_0_2" | Foreign |
+| Field Name | Data Type | Description | Example Value | Key |
+|-------------|-----------|-------------|---------------|-----|
+| pitchID | Integer | Unique identifier for each pitch in the dataset, coutning up from 0 | 1349 | Primary |
+| pitcher | Integer | MLBAM identifer for each pitcher in the dataset | 445276 | Foreign |
+| player_name | String | Name of the pitcher | "Alcala, Jorge" | |
+| p_throws | String | Handedness of the pitcher | "L" | |
+| game_date | Datetime | Date of the game pitch was thrown in | "2024-05-13" |
+| game_year | Integer | Year of the game pitch was thrown in | 2021 |
+| pitcher_season | String | Composite foreign key combining pitcher and game_year columns | "445276_2021" | Foreign |
+| balls | Integer | The number of balls in the count prior to the pitch | 3 |  |
+| strikes | Integer | The number of strikes in the count prior to the pitch | 2 |  |
+| pitch_type | String | The short-form name for the type of pitch thrown | "FF" |  |
+| pitch_name | String | The long-form name for the type of pitch thrown | "4-Seam Fastball" |  |
+| release_speed | Float | The speed of the ball at the time of release in mph | 94.8 |  |
+| release_pos_x | Float | Horizontal release position of the ball measured in feet from the catcher's perspective | -2.62 |  |
+| release_pos_y | Float | Release position of the ball measured in feet from the catcher's perspective | 54.63 |  |
+| release_pos_z | Float | Vertical release position of the ball measured in feet from the catcher's perspective | 6.42 |  |
+| release_extension | Float | Release extension of pitch in feet towards the plate | 5.9 |  |
+| release_spin_rate | Integer | Spin rate in rpm of pitch at release | 2400 |  |
+| spin_axis | Float | Spin axis in the 2D X-Z plane in degrees from 0 to 360 | 225 |  |
+| pfx_x | Float | Horizontal movement in inches from the catcher's perspective| -9.1 |  |
+| pfx_z | Float | Vertical deviation from gravity-only path in inches from the catcher's perspective| 19.1 |  |
+| ax | Float | Horizontal acceleration of the ball at y = 50ft in ft/sec$^2$| -11.74 |  |
+| ay | Float | Acceleration of the ball towards plate at y = 50ft in ft/sec$^2$| 33.52 |  |
+| az | Float | Vertical acceleration of the ball at y = 50ft in ft/sec$^2$| -12.75 |  |
+| description | String | Description of the resulting pitch| "missed_bunt" |  |
+| description_group | String | Broader, grouped description of the resulting pitch | "swinging_strike" |  |
+| events | String | Outcome of the resulting plate appearance, if it ends on this pitch | "fielders_choice" |  |
+| events_group | String | Broader, grouped outcome of the resulting plate appearance, if it ends on this pitch | "field_out" |  |
+| delta_run_exp | Float | Difference in expected runs before and after pitch | 1.42 | |
+| event_balls_strikes | String | Composite foreign key combining events_group/description_group, balls, and strikes | "home_run_0_2" | Foreign |
 
 #### **PitcherBio**
-| | Field Name | Data Type | Description | Example Value | Key |
-|-|-------------|-----------|-------------|---------------|-----|
-| | pitcherID | Integer | MLBAM identifer for each pitcher in the StatcastPitch dataset | 445276 | Primary |
-| | name | String | Name of the pitcher | "Jorge Alcala" |  |
-| | throws | String | Handedness of the pitcher | "R" | |
-| | age | Integer | Age of the pitcher at the time of the API call | 28 | |
-| | height | String | Height of the pitcher measured in feet and inches | "6' 3"" | |
-| | weight | Integer | Weight of the pitcher measured in lbs | 205 | |
+| Field Name | Data Type | Description | Example Value | Key |
+|-------------|-----------|-------------|---------------|-----|
+| pitcherID | Integer | MLBAM identifier for each pitcher in the StatcastPitch dataset | 445276 | Primary |
+| name | String | Name of the pitcher | "Jorge Alcala" |  |
+| throws | String | Handedness of the pitcher | "R" | |
+| age | Integer | Age of the pitcher at the time of the API call | 28 | |
+| height | String | Height of the pitcher measured in feet and inches | "6' 3"" | |
+| weight | Integer | Weight of the pitcher measured in lbs | 205 | |
 
 #### **ExpectedRunValue**
-| | Field Name | Data Type | Description | Example Value | Key |
-|-|-------------|-----------|-------------|---------------|-----|
-| | event_balls_strikes | String | Composite primary key combining events_group/description_group, balls, and strikes | "home_run_3_2" | Primary |
-| | event | String | Pitch/PA outcome | "home_run" | |
-| | balls | Integer | Number of balls in the count | 3 | |
-| | strikes | Integer | Number of strikes in the count | 2 | |
-| | delta_run_exp | Float | Change in expected runs based on pitch/PA outcome and count| 1.42 | |
+| Field Name | Data Type | Description | Example Value | Key |
+|-------------|-----------|-------------|---------------|-----|
+| event_balls_strikes | String | Composite primary key combining events_group/description_group, balls, and strikes | "home_run_3_2" | Primary |
+| event | String | Pitch/PA outcome | "home_run" | |
+| balls | Integer | Number of balls in the count | 3 | |
+| strikes | Integer | Number of strikes in the count | 2 | |
+| delta_run_exp | Float | Change in expected runs based on pitch/PA outcome and count| 1.42 | |
 
 #### **PitcherStats**
-| | Field Name | Data Type | Description | Example Value | Key |
-|-|-------------|-----------|-------------|---------------|-----|
-| | pitcherID_Season | String | Composite primary key combining pitcher MLBAM identifer and season year columns | "445276_2021" | Primary |
-| | pitcherID | Integer | MLBAM identifer for each pitcher in the dataset | 445276 | Foreign |
-| | playerid| Integer | Fangraphs identifer for each pitcher in the dataset | 19361 | |
-| | Season | Integer | Year of the season | 2023 | |
-| | PlayerName | String | Name of the pitcher | "Corbin Burnes" | |
-| | Age | Float | Age of the pitcher at the start of the season | 26.0 | |
-| | Throws | String | Handedness of the pitcher | "R" | |
-| | ERA | Float | Earned Runs Allowed by pitcher per 9 innings pitched | 3.28 | |
-| | FIP | Float | Fielding-Independent Pitching; ERA-scale metric measuring pitcher performance separate from defensive impact | 3.61 | |
-| | xFIP | Float | Expected Fielding-Independent Pitching; FIP, accounting for randomness and park factor | 3.61 | |
-| | IP | Float | Number of innings pitched, where the decimal value refers to the number of outs recorded out of 3 | 182.1 | |
-| | Pitches | Integer | Number of pitches thrown in the season | 1321 | |
-| | WAR | Float | Wins Above Replacement; Measuring cumualtive value added to team | 5.6 | |
+| Field Name | Data Type | Description | Example Value | Key |
+|-------------|-----------|-------------|---------------|-----|
+| pitcherID_Season | String | Composite primary key combining pitcher MLBAM identifer and season year columns | "445276_2021" | Primary |
+| pitcherID | Integer | MLBAM identifer for each pitcher in the dataset | 445276 | Foreign |
+| playerid| Integer | Fangraphs identifier for each pitcher in the dataset | 19361 | |
+| Season | Integer | Year of the season | 2023 | |
+| PlayerName | String | Name of the pitcher | "Corbin Burnes" | |
+| Age | Float | Age of the pitcher at the start of the season | 26.0 | |
+| Throws | String | Handedness of the pitcher | "R" | |
+| ERA | Float | Earned Runs Allowed by pitcher per 9 innings pitched | 3.28 | |
+| FIP | Float | Fielding-Independent Pitching; ERA-scale metric measuring pitcher performance separate from defensive impact | 3.61 | |
+| xFIP | Float | Expected Fielding-Independent Pitching; FIP, accounting for randomness and park factor | 3.61 | |
+| IP | Float | Number of innings pitched, where the decimal value refers to the number of outs recorded out of 3 | 182.1 | |
+| Pitches | Integer | Number of pitches thrown in the season | 1321 | |
+| WAR | Float | Wins Above Replacement; Measuring cumulative value added to team | 5.6 | |
 
 
 ### Data Dictionary Uncertainty
 # NEEDS FIXING, COMBINE WITH ABOVE TABLE
-| | Field Name | Data Type | Reason for Uncertainty | Quantification of Uncertainty |
-|-|-------------|-----------|-------------------------------|------|
-| | release_speed | Float | Systematic measurement error from the Hawk-Eye tracking system  | $\pm$0.1-0.3 mph |
-| | release_pos_x | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
-| | release_pos_y | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
-| | release_pos_z | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
-| | release_extension | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
-| | pfx_x | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$1 in  |
-| | pfx_z | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$1 in  |
-| | ax | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
-| | ay | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
-| | az | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
-| | release_spin_rate | Integer | Systematic measurement error from the Hawk-Eye tracking system | $\pm$25-50 rpm |
-| | spin_axis | Integer | Systematic measurement error from the Hawk-Eye tracking system. Higher for pitches with significant gyrospin | $\pm$2-10 deg |
-| | delta_run_exp | Float | Uncertainty determined by sample size, with small sample count-outcome combinations having greater uncertainity | $\pm$0.001-0.07 runs |
+| Field Name | Data Type | Reason for Uncertainty | Quantification of Uncertainty |
+|-------------|-----------|-------------------------------|------|
+| release_speed | Float | Systematic measurement error from the Hawk-Eye tracking system  | $\pm$0.1-0.3 mph |
+| release_pos_x | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
+| release_pos_y | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
+| release_pos_z | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
+| release_extension | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
+| pfx_x | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$1 in  |
+| pfx_z | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$1 in  |
+| ax | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
+| ay | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
+| az | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
+| release_spin_rate | Integer | Systematic measurement error from the Hawk-Eye tracking system | $\pm$25-50 rpm |
+| spin_axis | Integer | Systematic measurement error from the Hawk-Eye tracking system. Higher for pitches with significant gyrospin | $\pm$2-10 deg |
+| delta_run_exp | Float | Uncertainty determined by sample size, with small sample count-outcome combinations having greater uncertainty | $\pm$0.001-0.07 runs |
+
 
