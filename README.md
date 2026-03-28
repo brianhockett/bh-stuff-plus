@@ -98,7 +98,7 @@ The first major decision made was about which seasons of data to collect. The ch
 ![Entity Relationship Diagram](https://github.com/brianhockett/bh-stuff-plus/blob/main/img/erd.png)
 
 ### Data Table
-|-------------|-----------|-------------|---------------|
+|-------------|-----------|-------------|
 | StatcastPitch | Outcome and pitch characteristics for every pitch captured by Statcast from 2021 to 2025| ENTER ONEDRIVE LINK |
 | PitcherStats | Summary statistics for every pitcher-season from 2021 to 2025| ENTER ONEDRIVE LINK |
 | PitcherBio | Biographical information for every pitcher found in the StatcastPitch table | ENTER ONEDRIVE LINK |
