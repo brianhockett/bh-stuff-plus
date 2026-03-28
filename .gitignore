@@ -2,6 +2,7 @@
 *.parquet
 *.log
 *.db
+*wal
 test*
 data
 logs
