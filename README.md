@@ -129,9 +129,9 @@ The first major decision made was about which seasons of data to collect. The ch
 | spin_axis | Float | Spin axis in the 2D X-Z plane in degrees from 0 to 360 | 225 |  |
 | pfx_x | Float | Horizontal movement in inches from the catcher's perspective| -9.1 |  |
 | pfx_z | Float | Vertical deviation from gravity-only path in inches from the catcher's perspective| 19.1 |  |
-| ax | Float | Horizontal acceleration of the ball at y = 50ft in ft/sec$^2$| -11.74 |  |
-| ay | Float | Acceleration of the ball towards plate at y = 50ft in ft/sec$^2$| 33.52 |  |
-| az | Float | Vertical acceleration of the ball at y = 50ft in ft/sec$^2$| -12.75 |  |
+| ax | Float | Horizontal acceleration of the ball at y = 50ft in ft/sec²| -11.74 |  |
+| ay | Float | Acceleration of the ball towards plate at y = 50ft in ft/sec²| 33.52 |  |
+| az | Float | Vertical acceleration of the ball at y = 50ft in ft/sec²| -12.75 |  |
 | description | String | Description of the resulting pitch| "missed_bunt" |  |
 | description_group | String | Broader, grouped description of the resulting pitch | "swinging_strike" |  |
 | events | String | Outcome of the resulting plate appearance, if it ends on this pitch | "fielders_choice" |  |
@@ -180,18 +180,18 @@ The first major decision made was about which seasons of data to collect. The ch
 # NEEDS FIXING, COMBINE WITH ABOVE TABLE
 | Field Name | Data Type | Reason for Uncertainty | Quantification of Uncertainty |
 |-------------|-----------|-------------------------------|------|
-| release_speed | Float | Systematic measurement error from the Hawk-Eye tracking system  | $\pm$0.1-0.3 mph |
-| release_pos_x | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
-| release_pos_y | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
-| release_pos_z | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
-| release_extension | Float | Systematic measurement error from the Hawk-Eye tracking system | $\pm$0.02 ft |
-| pfx_x | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$1 in  |
-| pfx_z | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$1 in  |
-| ax | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
-| ay | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
-| az | Float | Compounded errors from positional tracking when fitting trajectory model | $\pm$2 ft/sec$^2$ |
-| release_spin_rate | Integer | Systematic measurement error from the Hawk-Eye tracking system | $\pm$25-50 rpm |
-| spin_axis | Integer | Systematic measurement error from the Hawk-Eye tracking system. Higher for pitches with significant gyrospin | $\pm$2-10 deg |
-| delta_run_exp | Float | Uncertainty determined by sample size, with small sample count-outcome combinations having greater uncertainty | $\pm$0.001-0.07 runs |
+| release_speed | Float | Systematic measurement error from the Hawk-Eye tracking system  | ±0.1-0.3 mph |
+| release_pos_x | Float | Systematic measurement error from the Hawk-Eye tracking system | ±0.02 ft |
+| release_pos_y | Float | Systematic measurement error from the Hawk-Eye tracking system | ±0.02 ft |
+| release_pos_z | Float | Systematic measurement error from the Hawk-Eye tracking system | ±0.02 ft |
+| release_extension | Float | Systematic measurement error from the Hawk-Eye tracking system | ±0.02 ft |
+| pfx_x | Float | Compounded errors from positional tracking when fitting trajectory model | ±1 in  |
+| pfx_z | Float | Compounded errors from positional tracking when fitting trajectory model | ±1 in  |
+| ax | Float | Compounded errors from positional tracking when fitting trajectory model | ±2 ft/sec² |
+| ay | Float | Compounded errors from positional tracking when fitting trajectory model | ±2 ft/sec² |
+| az | Float | Compounded errors from positional tracking when fitting trajectory model | ±2 ft/sec² |
+| release_spin_rate | Integer | Systematic measurement error from the Hawk-Eye tracking system | ±25-50 rpm |
+| spin_axis | Integer | Systematic measurement error from the Hawk-Eye tracking system. Higher for pitches with significant gyrospin | ±2-10 deg |
+| delta_run_exp | Float | Uncertainty determined by sample size, with small sample count-outcome combinations having greater uncertainty | ±0.001-0.07 runs |
 
 
