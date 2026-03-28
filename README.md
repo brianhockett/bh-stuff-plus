@@ -11,8 +11,8 @@ Executive summary paragraph
 | NetID | mgh2xx |
 | DOI | [https://doi.org/TBD](https://doi.org/TBD) |
 | Press Release | [New Stuff+ Model Shows Predictive Advantage Over Traditional Performance Metrics](https://github.com/brianhockett/bh-stuff-plus/blob/main/PressRelease.md) |
-| Data | [UVA OneDrive Folder Link](TBD) |
-| Pipeline | [Analysis Pipeline](TBD) |
+| Data | [UVA OneDrive  Data Folder](https://myuva-my.sharepoint.com/:f:/g/personal/mgh2xx_virginia_edu/IgB5z6KoMc_AQIs6T11bQD6eAcM1JZ2swVPiEOyaEjO1Sm0?e=P2GLpJ) |
+| Pipeline | [Analysis Pipeline](https://github.com/brianhockett/bh-stuff-plus/blob/main/pipeline.ipynb) |
 | License | [TBD](TBD.md) |
 
 ## Problem Definition
@@ -56,13 +56,13 @@ Traditionally, Major League Baseball teams and fans have relied on outcome-based
 This project lives in the Sabermetrics domain of Major League Baseball. Sabermetrics refers to the empirical, analytical approach to understanding the sport of baseball, and the performance of baseball players. This specific project uses Sabermetrics to analyze the performance of individual pitches, and understand the characteristics of pitches that lead to positive outcomes. Since 2015, Major League Baseball has used Statcast, a high-speed camera tracking system, to capture the ball movement, swings, and batted-ball results for every pitch thrown at the major league level. This granular pitch-level data is used for a number of purposes in the Sabermetrics domain, from analysis of how pitch velocity and movement factors into results, to modeling batter swing-paths in order to increase exit velocity. Through this precise, objective data, sabermetrics enables a deeper understanding of the underlying mechanics of pitcher performance, moving beyond traditional outcome-based statistics towards predictive, process-based evaluation.
 
 ### Background Reading
-| Title | Description | Link |
+| Title | Description | Link to Article |
 |-------|-------------|------|
-| Statcast at 10: From MLB’s secret project to inescapable part of modern baseball | NYT The Athletic article covering Statcast's introduction, growth, and impact on baseball analytics and player evaluation | ENTER ONEDRIVE LINK |
-| What is Stuff+ and How Can it Help You? | Rockland Peak Performance overview of Stuff metrics, explanation of Stuff+ calculation, and application for pitcher development and performance analysis | ENTER ONEDRIVE LINK |
-| Pitch Design: What is Stuff+? Quantifying Pitches with Pitch Models | Driveline's technical guide to their version of the Stuff+ metric, and how they implement it for player development | ENTER ONEDRIVE LINK |
-| What the latest Statcast upgrade makes possible | MLB.com article covering the 2020 improvement of Statcast systems, which enables pose tracking technology for more detailed analysis | ENTER ONEDRIVE LINK |
-| Baseball Spin Rate Basics and Pitch Movement | Rockland Peak Performance guide to understanding spin rate and pitch movement | ENTER ONEDRIVE LINK |
+| Statcast at 10: From MLB’s secret project to inescapable part of modern baseball | NYT The Athletic article covering Statcast's introduction, growth, and impact on baseball analytics and player evaluation | [History of Statcast Article](https://myuva-my.sharepoint.com/:b:/g/personal/mgh2xx_virginia_edu/IQA8V02biyG5RKIh2yFlmeavAdpht2WJyvGvCG5aE1C0nDE?e=UgCXkX) |
+| What is Stuff+ and How Can it Help You? | Rockland Peak Performance overview of Stuff metrics, explanation of Stuff+ calculation, and application for pitcher development and performance analysis | [Stuff+ Explanation Article](https://myuva-my.sharepoint.com/:b:/g/personal/mgh2xx_virginia_edu/IQCwmYYtyEOCSaZpf6ki9m66AbXToE6lO1DTl5buKfeKN1Y?e=7JFWGg) |
+| Pitch Design: What is Stuff+? Quantifying Pitches with Pitch Models | Driveline's technical guide to their version of the Stuff+ metric, and how they implement it for player development | [Pitch Design Article](https://myuva-my.sharepoint.com/:b:/g/personal/mgh2xx_virginia_edu/IQBVsZLy-pLRRa0N0cWrwtvPARVn6Lt-_qIqCPAfMoGhz1g?e=vxKl2r) |
+| What the latest Statcast upgrade makes possible | MLB.com article covering the 2020 improvement of Statcast systems, which enables pose tracking technology for more detailed analysis | [Statcast Upgrade Article](https://myuva-my.sharepoint.com/:b:/g/personal/mgh2xx_virginia_edu/IQCwmYYtyEOCSaZpf6ki9m66AbXToE6lO1DTl5buKfeKN1Y?e=7JFWGg) |
+| Baseball Spin Rate Basics and Pitch Movement | Rockland Peak Performance guide to understanding spin rate and pitch movement | [Spin Rate Basics and Pitch Movement Article](https://myuva-my.sharepoint.com/:b:/g/personal/mgh2xx_virginia_edu/IQC7mKckH4ewQ6ErzRKuzukYAQcGY-0U5geVRe5XP3iNOKI?e=fvusGV) |
 
 ## Data Creation
 
@@ -74,10 +74,10 @@ Each dataset was saved as both a .csv and .parquet file, and will be loaded into
 ### Code Table
 | Data | Description | Link to Code |
 |-------------|-----------|-------------|
-| Statcast Pitch Data | Uses `pybaseball` package to get Statcast pitch data from 2021 to 2025 | https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-statcast.py |
-| Pitcher Statistics Data | Uses `Fangraphs API` to collect pitcher summary statistics from 2021 to 2025 | https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-stats.py |
-| Pitcher Biographical Data | Uses `MLB Stats API` to collect pitcher biographical information | https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-bio.py |
-| Expected Run Value Data | Uses Statcast pitch data to derive average Expected Run Value deltas for every balls-strikes-outcome combination | https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-run-values.py |
+| Statcast Pitch Data | Uses `pybaseball` package to get Statcast pitch data from 2021 to 2025 | [Statcast Code](https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-statcast.py) |
+| Pitcher Statistics Data | Uses `Fangraphs API` to collect pitcher summary statistics from 2021 to 2025 | [Pitcher Stats Code](https://github.com/brianhockett/bh-stuff-plus/blob/main//src/generate-stats.py) |
+| Pitcher Biographical Data | Uses `MLB Stats API` to collect pitcher biographical information | [Pitcher Bio Code](https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-bio.py) |
+| Expected Run Value Data | Uses Statcast pitch data to derive average Expected Run Value deltas for every balls-strikes-outcome combination | [Expected Run Value Code](https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-run-values.py) |
 
 ### Bias Identification
 # NEEDS FIXING
@@ -98,7 +98,7 @@ The first major decision made was about which seasons of data to collect. The ch
 ![Entity Relationship Diagram](https://github.com/brianhockett/bh-stuff-plus/blob/main/img/erd.png)
 
 ### Data Table
-| Table | Description | Size (CSV) | Size (Parquet) | Link |
+| Table | Description | Size (CSV) | Size (Parquet) | Link to Data |
 |-------------|-----------|---|---|-------------|
 | StatcastPitch | Outcome and pitch characteristics for every pitch captured by Statcast from 2021 to 2025| 812 MB | 160 MB| [StatcastPitch Data](https://myuva-my.sharepoint.com/:u:/g/personal/mgh2xx_virginia_edu/IQCFA8qjA3E_RqE-ENFCZfdUAZCmkKZUyp-EI5O5hFdWetY?e=rjPyh5) |
 | PitcherStats | Summary statistics for every pitcher-season from 2021 to 2025| 573 KB |258 KB | [PitcherStats Data](https://myuva-my.sharepoint.com/:u:/g/personal/mgh2xx_virginia_edu/IQDajyVuscayQ6UCZXz_7kuzAf_a99sb0C5brWAD1rdgA2E?e=Bpgf8V) |
