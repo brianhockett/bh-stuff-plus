@@ -100,10 +100,10 @@ The first major decision made was about which seasons of data to collect. The ch
 ### Data Table
 | Table | Description | Size (CSV) | Size (Parquet) | Link |
 |-------------|-----------|---|---|-------------|
-| StatcastPitch | Outcome and pitch characteristics for every pitch captured by Statcast from 2021 to 2025| 812 MB | 160 MB| ENTER ONEDRIVE LINK |
-| PitcherStats | Summary statistics for every pitcher-season from 2021 to 2025| 573 KB |258 KB | ENTER ONEDRIVE LINK |
-| PitcherBio | Biographical information for every pitcher found in the StatcastPitch table |67 KB |40 KB | ENTER ONEDRIVE LINK |
-| ExpectedRunValue | Expected Run Value delta for every balls-strikes-outcome combination |6 KB |6 KB | ENTER ONEDRIVE LINK |
+| StatcastPitch | Outcome and pitch characteristics for every pitch captured by Statcast from 2021 to 2025| 812 MB | 160 MB| [StatcastPitch Data](https://myuva-my.sharepoint.com/:u:/g/personal/mgh2xx_virginia_edu/IQCFA8qjA3E_RqE-ENFCZfdUAZCmkKZUyp-EI5O5hFdWetY?e=rjPyh5) |
+| PitcherStats | Summary statistics for every pitcher-season from 2021 to 2025| 573 KB |258 KB | [PitcherStats Data](https://myuva-my.sharepoint.com/:u:/g/personal/mgh2xx_virginia_edu/IQDajyVuscayQ6UCZXz_7kuzAf_a99sb0C5brWAD1rdgA2E?e=Bpgf8V) |
+| PitcherBio | Biographical information for every pitcher found in the StatcastPitch table |67 KB |40 KB | [PitcherBio Data](https://myuva-my.sharepoint.com/:u:/g/personal/mgh2xx_virginia_edu/IQDloHJW6zg-SZRE-kwDATInASCnpoVCrockz90cpFScRd4?e=qcQMGJ)|
+| ExpectedRunValue | Expected Run Value delta for every balls-strikes-outcome combination |6 KB |6 KB | [ExpectedRunValue Data](https://myuva-my.sharepoint.com/:u:/g/personal/mgh2xx_virginia_edu/IQDjTWGguuSeRLo_655pzODlAZzjtuIHCEeQYJqDTPipGCM?e=k8aZuF) |
 
 ### Data Dictionary
 #### **StatcastPitch**
