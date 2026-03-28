@@ -98,11 +98,12 @@ The first major decision made was about which seasons of data to collect. The ch
 ![Entity Relationship Diagram](https://github.com/brianhockett/bh-stuff-plus/blob/main/img/erd.png)
 
 ### Data Table
-|-------------|-----------|-------------|
-| StatcastPitch | Outcome and pitch characteristics for every pitch captured by Statcast from 2021 to 2025| ENTER ONEDRIVE LINK |
-| PitcherStats | Summary statistics for every pitcher-season from 2021 to 2025| ENTER ONEDRIVE LINK |
-| PitcherBio | Biographical information for every pitcher found in the StatcastPitch table | ENTER ONEDRIVE LINK |
-| ExpectedRunValue | Expected Run Value delta for every balls-strikes-outcome combination | ENTER ONEDRIVE LINK |
+| Table | Description | Size (CSV) | Size (Parquet) | Link |
+|-------------|-----------|---|---|-------------|
+| StatcastPitch | Outcome and pitch characteristics for every pitch captured by Statcast from 2021 to 2025| 812 MB | 160 MB| ENTER ONEDRIVE LINK |
+| PitcherStats | Summary statistics for every pitcher-season from 2021 to 2025| 573 KB |258 KB | ENTER ONEDRIVE LINK |
+| PitcherBio | Biographical information for every pitcher found in the StatcastPitch table |67 KB |40 KB | ENTER ONEDRIVE LINK |
+| ExpectedRunValue | Expected Run Value delta for every balls-strikes-outcome combination |6 KB |6 KB | ENTER ONEDRIVE LINK |
 
 ### Data Dictionary
 #### **StatcastPitch**
