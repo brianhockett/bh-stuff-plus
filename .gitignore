@@ -1,6 +1,7 @@
 *.csv
 *.parquet
 *.log
+*.db
 test*
 data
 logs
