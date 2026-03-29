@@ -2,8 +2,9 @@
 
 ### Executive Summary
 
-Executive summary paragraph
+This repository contains the data, code, and documentation for a Stuff+ model evaluating MLB pitcher performance using Statcast pitch-level data from the 2021-2025 seasons. The dataset is built from four tables constructed using the relational model and stored in a DuckDB Database, including Statcast pitch data, pitcher biographical information, pitcher season statistics, and expected run values. The repository includes data generation scripts, a full data analysis pipeline, data dictionary, bias identification and mitigation analysis, and a press release aimed at communicating the motivation and findings of the project. All materials and information can be found in this README.
 
+### Project Metadata
 
 | Information | Value  |
 |---:|---:|
@@ -18,6 +19,7 @@ Executive summary paragraph
 ## Problem Definition
 
 ### General and Specific Problem
+
 - **General Problem:** Projecting athletic performance. Projecting the performance of MLB pitchers.
 - **Specific Problem:** Using MLB Statcast Data for the 2021-2025 Seasons and Expected Run Values, design a machine learning model to predict the performance of MLB Pitchers based on the quality of their individual pitches in terms of their expected run value, standardized into a normally distributed `Stuff+` value, validating with next-season statistical outcomes.
 
@@ -80,12 +82,10 @@ Each dataset was saved as both a .csv and .parquet file, and will be loaded into
 | Expected Run Value Data | Uses Statcast pitch data to derive average Expected Run Value deltas for every balls-strikes-outcome combination | [Expected Run Value Code](https://github.com/brianhockett/bh-stuff-plus/blob/main/src/generate-run-values.py) |
 
 ### Bias Identification
-# NEEDS FIXING
-Bias may have been introduced in a number of ways during the data collection process. Survivorship bias may be the most prominent form of bias in the collection of the Statcast dataset, as pitcher injuries are very common in MLB. Injured pitchers will make up a significantly lower proportion of the dataset than they would if they were healthy, and may have notably different pitch characteristics than healthy pitchers. For example, pitchers with high velocity get injured more frequently, and will therefore make up less of the dataset than they otherwise would. Secondly, the very small sample size of some combinations in the ExpectedRunValue table may skew the results of the analysis later on. Certain combinations, such as triples on a 3-0 count, occur very rarely in MLB games, which could lead to outlier average run values, where a small number of high or low value instances of this combination cause the average to drastically over- or under- estimate the true value of that outcome. Lastly, measurement bias inherent to the Hawk-Eye tracking system may bias the results of pitch tracking from stadium-to-stadium. While every MLB stadium has the same number of Hawk-Eye cameras, it is impossible to configure them identically due to the non-uniformity of MLB ballparks. This could lead to systematic differences in the measurements of different stadiums.
+Bias may have been introduced in a number of ways during the data collection process. Survivorship bias may be the most prominent form of bias in the collection of the Statcast dataset, as pitcher injuries are very common in MLB. Injured pitchers will make up a significantly lower proportion of the dataset than they would if they were healthy, and may have notably different pitch characteristics than healthy pitchers. For example, pitchers with high velocity get injured more frequently, and will therefore make up less of the dataset than they otherwise would. Secondly, small sample bias in the ExpectedRunValue table may skew the results of the analysis later on. Certain combinations, such as triples on a 3-0 count, occur very rarely in MLB games, which could lead to outlier average run values, where a small number of high or low value instances of this combination cause the average to drastically over- or under- estimate the true value of that outcome. Lastly, measurement bias inherent to the Hawk-Eye tracking system may bias the results of pitch tracking from stadium-to-stadium. While every MLB stadium has the same number of Hawk-Eye cameras, it is impossible to configure them identically due to the non-uniformity of MLB ballparks. This could lead to systematic differences in the measurements of different stadiums.
 
 ### Bias Mitigation
-# MAY NEED FIXING
-Several steps were and can be taken during data collection and analysis processes to mitigate potential biases. One of these steps was filtering the Statcast data to include only regular season games via the `game_type` field. This ensured that spring training and playoff data were excluded from the dataset, as they would skew the pitch characteristics, with spring training pitches being of lower quality, and playoff pitches of higher quality. Anomalous and ultra-rare observations identified during data validation, such as walks occurring in impossible counts and hit-by-pitch records with no corresponding event, were also removed. This ensured that the ExpectedRunValue table would be as unbiased as possible when building the `Stuff+` model. In the analysis phase, handedness mirroring of horizontal features will be applied to normalize differences between left- and right- handed pitchers, to ensure these features do not work against themselves in the model.
+Several steps were and can be taken during data collection and analysis processes to mitigate potential biases. One of these steps was filtering the Statcast data to include only regular season games via the `game_type` field. This ensured that spring training and playoff data were excluded from the dataset, as they would skew the pitch characteristics, with spring training pitches being of lower quality, and playoff pitches of higher quality. Anomalous and ultra-rare observations identified during data validation, such as walks occurring in impossible counts and hit-by-pitch records with no corresponding event, were also removed. By removing these rare combinations, the risk of small sample bias skewing the ExpectedRunValue table is directly reduced. This ensured that the ExpectedRunValue table reflected a reliable and representative sample of MLB outcomes. In the analysis phase, handedness mirroring of horizontal features will be applied to normalize differences between left- and right- handed pitchers, to ensure these features do not work against themselves in the model.
 
 Unfortunately, not all potential biases can be fully mitigated. Survivorship bias from pitcher injuries is an inherent limitation of any MLB pitcher dataset. Similarly, stadium-level measurement bias from Hawk-Eye configuration differences cannot be corrected within the Statcast dataset. These biases should be acknowledged as limitations of the dataset and considered when interpreting the analysis results.
 
@@ -94,8 +94,8 @@ The first major decision made was about which seasons of data to collect. The ch
 
 ## Metadata
 
-### Schema
-![Entity Relationship Diagram](https://github.com/brianhockett/bh-stuff-plus/blob/main/img/erd.png)
+### Schema (Entity Relationship Diagram)
+![Entity Relationship Diagram](https://raw.githubusercontent.com/brianhockett/bh-stuff-plus/main/img/erd.png)
 
 ### Data Table
 | Table | Description | Size (CSV) | Size (Parquet) | Link to Data |
@@ -106,10 +106,13 @@ The first major decision made was about which seasons of data to collect. The ch
 | ExpectedRunValue | Expected Run Value delta for every balls-strikes-outcome combination |6 KB |6 KB | [ExpectedRunValue Data](https://myuva-my.sharepoint.com/:u:/g/personal/mgh2xx_virginia_edu/IQDjTWGguuSeRLo_655pzODlAZzjtuIHCEeQYJqDTPipGCM?e=k8aZuF) |
 
 ### Data Dictionary
+
+**The data dictionary has been separated into two sections. The first contains descriptions and example values for each field. The second contains quantification of uncertainty for numerical features.**
+
 #### **StatcastPitch**
 | Field Name | Data Type | Description | Example Value | Key |
 |-------------|-----------|-------------|---------------|-----|
-| pitchID | Integer | Unique identifier for each pitch in the dataset, coutning up from 0 | 1349 | Primary |
+| pitchID | Integer | Unique identifier for each pitch in the dataset, counting up from 0 | 1349 | Primary |
 | pitcher | Integer | MLBAM identifer for each pitcher in the dataset | 445276 | Foreign |
 | player_name | String | Name of the pitcher | "Alcala, Jorge" | |
 | p_throws | String | Handedness of the pitcher | "L" | |
@@ -126,7 +129,7 @@ The first major decision made was about which seasons of data to collect. The ch
 | release_pos_z | Float | Vertical release position of the ball measured in feet from the catcher's perspective | 6.42 |  |
 | release_extension | Float | Release extension of pitch in feet towards the plate | 5.9 |  |
 | release_spin_rate | Integer | Spin rate in rpm of pitch at release | 2400 |  |
-| spin_axis | Float | Spin axis in the 2D X-Z plane in degrees from 0 to 360 | 225 |  |
+| spin_axis | Integer | Spin axis in the 2D X-Z plane in degrees from 0 to 360 | 225 |  |
 | pfx_x | Float | Horizontal movement in inches from the catcher's perspective| -9.1 |  |
 | pfx_z | Float | Vertical deviation from gravity-only path in inches from the catcher's perspective| 19.1 |  |
 | ax | Float | Horizontal acceleration of the ball at y = 50ft in ft/sec²| -11.74 |  |
@@ -177,21 +180,15 @@ The first major decision made was about which seasons of data to collect. The ch
 
 
 ### Data Dictionary Uncertainty
-# NEEDS FIXING, COMBINE WITH ABOVE TABLE
 | Field Name | Data Type | Reason for Uncertainty | Quantification of Uncertainty |
 |-------------|-----------|-------------------------------|------|
-| release_speed | Float | Systematic measurement error from the Hawk-Eye tracking system  | ±0.1-0.3 mph |
-| release_pos_x | Float | Systematic measurement error from the Hawk-Eye tracking system | ±0.02 ft |
-| release_pos_y | Float | Systematic measurement error from the Hawk-Eye tracking system | ±0.02 ft |
-| release_pos_z | Float | Systematic measurement error from the Hawk-Eye tracking system | ±0.02 ft |
-| release_extension | Float | Systematic measurement error from the Hawk-Eye tracking system | ±0.02 ft |
-| pfx_x | Float | Compounded errors from positional tracking when fitting trajectory model | ±1 in  |
-| pfx_z | Float | Compounded errors from positional tracking when fitting trajectory model | ±1 in  |
-| ax | Float | Compounded errors from positional tracking when fitting trajectory model | ±2 ft/sec² |
-| ay | Float | Compounded errors from positional tracking when fitting trajectory model | ±2 ft/sec² |
-| az | Float | Compounded errors from positional tracking when fitting trajectory model | ±2 ft/sec² |
-| release_spin_rate | Integer | Systematic measurement error from the Hawk-Eye tracking system | ±25-50 rpm |
-| spin_axis | Integer | Systematic measurement error from the Hawk-Eye tracking system. Higher for pitches with significant gyrospin | ±2-10 deg |
-| delta_run_exp | Float | Uncertainty determined by sample size, with small sample count-outcome combinations having greater uncertainty | ±0.001-0.07 runs |
+| release_speed | Float | Systematic measurement error from the Hawk-Eye tracking system. Under ideal camera geometry the typical measurement error is approximately ±0.1 mph, while stadiums with less optimal camera placement or non-uniform ballpark configurations can produce deviations approaching ±0.3 mph.  | ±0.1-0.3 mph |
+| release_pos_x/y/z | Float | Systematic measurement error from the Hawk-Eye tracking system. Release position is derived via triangulation across multiple camera views, with typical error around ±0.02 ft under ideal conditions, potentially higher in stadiums with suboptimal camera placement. | ±0.02 ft |
+| release_extension | Float | Systematic measurement error from the Hawk-Eye tracking system. Extension is derived from the intersection of the pitcher's biomechanical release signature and ball tracking data, with typical error around ±0.02 ft under ideal camera conditions, potentially higher in stadiums with suboptimal camera placement. | ±0.02 ft |
+| pfx_x/z | Float | Compounded errors from positional tracking when fitting the trajectory model. Movement is derived by comparing the actual pitch trajectory to a theoretical pitch of the same speed with no spin-induced movement. Small positional tracking errors accumulate across multiple frames, with typical error around ±1 in, potentially higher for pitches with unusual movement profiles. | ±1 in  |
+| ax/y/z | Float | Compounded errors from fitting a constant acceleration model to the raw pitch trajectory. Since true pitch acceleration is not constant, the nine-parameter fit is an approximation, meaning errors in positional tracking compound across the trajectory, with typical error around ±2 ft/sec². | ±2 ft/sec² |
+| release_spin_rate | Integer | Systematic measurement error from the Hawk-Eye tracking system. Spin rate is measured by resolving the seam pattern across individual video frames, meaning accuracy depends on seam visibility and camera angle, with error estimated to trend toward ±25 rpm under ideal conditions and up to ±50 rpm for pitches with poor seam visibility or unusual grip. | ±25-50 rpm |
+| spin_axis | Integer | Systematic measurement error from the Hawk-Eye tracking system. Spin axis is derived from the orientation of the seam pattern across video frames, with accuracy dependent on seam visibility and gyrospin. Pitches with significant gyrospin have a less distinguishable seam pattern, with error estimated around ±2 degrees under ideal conditions and up to ±10 degrees for pitches with high gyrospin. | ±2-10 deg |
+| delta_run_exp | Float | Uncertainty determined by sample size, with small sample count-outcome combinations having greater uncertainty. For common combinations, error is estimated around ±0.001 runs, while rare combinations such as triples on a 3-0 count can produce deviations approaching ±0.07 runs due to sparse data skewing the average run value. | ±0.001-0.07 runs |
 
 
