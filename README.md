@@ -10,7 +10,7 @@ This repository contains the data, code, and documentation for a Stuff+ model ev
 |---:|---:|
 | Name | Brian Hockett |
 | NetID | mgh2xx |
-| DOI | [https://doi.org/10.5281/zenodo.19314811](https://doi.org/10.5281/zenodo.19314811)
+| DOI | [https://doi.org/10.5281/zenodo.19314810](https://doi.org/10.5281/zenodo.19314810)
 | Press Release | [New Stuff+ Model Shows Predictive Advantage Over Traditional Performance Metrics](https://github.com/brianhockett/bh-stuff-plus/blob/main/PressRelease.md) |
 | Data | [UVA OneDrive  Data Folder](https://myuva-my.sharepoint.com/:f:/g/personal/mgh2xx_virginia_edu/IgB5z6KoMc_AQIs6T11bQD6eAcM1JZ2swVPiEOyaEjO1Sm0?e=P2GLpJ) |
 | Pipeline | [Analysis Pipeline (.ipynb)](https://github.com/brianhockett/bh-stuff-plus/blob/main/pipeline.ipynb) + [Analysis Pipeline (.md)](https://github.com/brianhockett/bh-stuff-plus/blob/main/pipeline.md) |
